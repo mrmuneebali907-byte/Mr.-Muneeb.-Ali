@@ -74,7 +74,7 @@ module.exports = {
     },
     
     // Timezone
-    timezone: 'Asia/Kolkata',
+    timezone: 'Asia/Karachi',
     
     // Limits
     maxWarnings: 3,
