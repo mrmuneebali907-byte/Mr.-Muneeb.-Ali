@@ -42,7 +42,7 @@ Change **bot image, prefix, name, commands**, and more with simple commands.
 
 <div align="center">
 
-<a href="https://knight-bot-paircode.onrender.com/" target="_blank">
+<a href="https://your-repl-name.your-username.repl.co" target="_blank">
   <img src="https://img.shields.io/badge/Generate-Pair%20Code-blueviolet?style=for-the-badge" alt="Generate Pair Code">
 </a>
 
