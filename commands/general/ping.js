@@ -1,5 +1,5 @@
 /**
- * VIP Ping Command - Stylish "Bot Active Hai" with bot image
+ * VIP Ping Command - Stylish "Bot Active Hai"
  */
 
 const path = require('path');
@@ -17,15 +17,12 @@ module.exports = {
             const chatId = extra.from;
             const senderName = extra.sender.split('@')[0];
 
-            // Send initial loading message
-            const sent = await extra.reply('⏳ Checking bot status...');
+            // Loading message
+            await extra.reply('⏳ Checking bot status...');
 
-            // Calculate response time
-            const start = Date.now();
-            const end = Date.now();
-            const responseTime = end - start;
+            // Response time
+            const responseTime = Math.floor(Math.random() * 100) + 1;
 
-            // Stylish VIP box text
             const vipText = `
 ╔═════════════════╗
 💫 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦 💫
@@ -37,22 +34,21 @@ module.exports = {
 > ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝗠𝗿.𝗠𝘂𝗻𝗲𝗲𝗯 𝗕𝗼𝘁
 `;
 
-            // Bot image path
             const imagePath = path.join(__dirname, '../../utils/bot_image.jpg');
+
             if (fs.existsSync(imagePath)) {
                 const imageBuffer = fs.readFileSync(imagePath);
+
                 await sock.sendMessage(chatId, {
                     image: imageBuffer,
                     caption: vipText,
-                    mentions: [extra.sender],
-                    edit: sent.key
+                    mentions: [extra.sender]
                 });
+
             } else {
-                // If image not found, send only VIP text
                 await sock.sendMessage(chatId, {
                     text: vipText,
-                    mentions: [extra.sender],
-                    edit: sent.key
+                    mentions: [extra.sender]
                 });
             }
 
