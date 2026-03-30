@@ -5,7 +5,7 @@
 module.exports = {
     // Bot Owner Configuration
     ownerNumber: ['923329838699'], // Add your number without + or spaces (e.g., 923329838699)
-    ownerName: ['𝐌𝐲.𝐁𝐨𝐬𝐬 😎'], // Owner names corresponding to ownerNumber array
+    ownerName: ['☟𝐌.𝐫𓄂𝐌𝐮𝐧𝐞𝐞𝐛𓄂𝐀𝐥𝐢𓃬'], // Owner names corresponding to ownerNumber array
     
     // Bot Configuration
     botName: '𝐌𝐫.𝐌𝐮𝐧𝐞𝐞𝐛 𝐀𝐥𝐢 𝐁𝐨𝐭',
@@ -24,7 +24,7 @@ module.exports = {
     autoTyping: false,
     autoBio: false,
     autoSticker: false,
-    autoReact: false,
+    autoReact: true,
     autoReactMode: 'bot', // set bot or all via cmd
     autoDownload: false,
     
@@ -37,7 +37,7 @@ module.exports = {
       antiall: false, // Owner only - blocks all messages from non-admins
       antiviewonce: false,
       antibot: false,
-      anticall: false, // Anti-call feature
+      anticall: true, // Anti-call feature
       antigroupmention: false, // Anti-group mention feature
       antigroupmentionAction: 'delete', // 'delete', 'kick'
       welcome: false,
