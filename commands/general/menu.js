@@ -1,7 +1,3 @@
-/**
- * Menu Command - Display all available commands
- */
-
 const config = require('../../config');
 const { loadCommands } = require('../../utils/commandLoader');
 
@@ -17,7 +13,7 @@ module.exports = {
       const commands = loadCommands();
       const categories = {};
       
-      // Group commands by category
+      // BOSS, ye hissa handler se saare commands uthayega
       commands.forEach((cmd, name) => {
         if (cmd.name === name) { 
           if (!categories[cmd.category]) {
@@ -36,17 +32,16 @@ module.exports = {
       menuText += `📦 Total Commands: ${commands.size}\n`;
       menuText += `👑 Owner: ${displayOwner}\n\n`;
       
-      // BOSS, Yahan se saari categories automatically show hongi
-      // Aap jis bhi category ka command add karenge, uska dabba yahan ban jayega
-      Object.keys(categories).forEach(category => {
-        const categoryName = category.toUpperCase();
-        const emoji = category === 'general' ? '📄' : category === 'textmaker' ? '🖋️' : category === 'owner' ? '👑' : '➜';
+      // AUTOMATIC SECTION GENERATOR
+      // Aap jis bhi folder/category mein command add karenge, wo yahan khud show hoga
+      Object.keys(categories).sort().forEach(cat => {
+        const categoryName = cat.toUpperCase();
         
         menuText += `┏━━━━━━━━━━━━━━━━━\n`;
-        menuText += `┃ ${emoji} ${categoryName} COMMAND\n`;
+        menuText += `┃ ➜ ${categoryName} COMMANDS\n`;
         menuText += `┗━━━━━━━━━━━━━━━━━\n`;
         
-        categories[category].forEach(cmd => {
+        categories[cat].forEach(cmd => {
           menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
@@ -54,9 +49,7 @@ module.exports = {
       
       menuText += `╰━━━━━━━━━━━━━━━━━\n\n`;
       menuText += `💡 Type ${config.prefix}help <command> for more info\n`;
-      menuText += `🌟 Bot Version: 1.0.0\n`;
       
-      // Send menu with image
       const fs = require('fs');
       const path = require('path');
       const imagePath = path.join(__dirname, '../../utils/bot_image.jpg');
@@ -78,15 +71,12 @@ module.exports = {
           }
         }, { quoted: msg });
       } else {
-        await sock.sendMessage(extra.from, {
-          text: menuText,
-          mentions: [extra.sender]
-        }, { quoted: msg });
+        await sock.sendMessage(extra.from, { text: menuText, mentions: [extra.sender] }, { quoted: msg });
       }
       
     } catch (error) {
       console.error('Menu Error:', error);
-      await sock.sendMessage(extra.from, { text: '❌ Menu load karne mein error aaya.' });
+      await sock.sendMessage(extra.from, { text: '❌ Error loading menu.' });
     }
   }
 };
